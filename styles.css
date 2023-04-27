@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 :root {
-    --primary-color: #003699;
-    --dark-color: #333333;
+    --primary-color: #f47575;
+    --dark-color: #4d5579;
     --light-color:#f4f4f4;
     --lose-color: #dc3545 ;
     --win-color: #28a745;
@@ -70,4 +70,18 @@ body {
     background-color: var(--dark-color);
  }
 
- 
+.choices {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+    margin-top: 3rem;
+    text-align: center;
+}  
+
+.choice {
+    cursor: pointer;
+}
+
+.choice:hover {
+    color: #99c0a9;
+}
