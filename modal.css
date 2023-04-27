@@ -34,3 +34,13 @@
    font-size: 1.2rem; 
    margin-top: 1rem;
 }
+
+@keyframe modalope {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
