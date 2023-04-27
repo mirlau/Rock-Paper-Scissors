@@ -8,4 +8,7 @@ const scoreboard = {
     computer: 0;
 }
 
- 
+ // Play game
+ function play(e) {
+    console.log(e.target.id);
+ }
