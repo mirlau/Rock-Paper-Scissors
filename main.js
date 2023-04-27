@@ -77,6 +77,11 @@ function showWinner(winner, computerChoice) {
         <p>Computer chose<strong>${computerChoice}</strong></p>
         `;  
     }
+    // Show score
+    score.innerHTML = `
+    <p>Player: ${scoreboard.player}</p>
+    <p>Computer: ${scoreboard.computer}</p>
+    `;
 }
    
  // Event listeners
