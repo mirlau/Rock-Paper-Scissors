@@ -15,7 +15,8 @@ function play(e) {
   const computerChoice = getComputerChoice();
   const winner = getWinner(playerChoice, computerChoice);
   
-  console.log(playerChoice, computerChoice, winner)
+  showWinner(winner, computerChoice);
+ 
     }
 
 // Gets computes choice
@@ -82,7 +83,17 @@ function showWinner(winner, computerChoice) {
     <p>Player: ${scoreboard.player}</p>
     <p>Computer: ${scoreboard.computer}</p>
     `;
+
+    modal.style.display = 'block';
+}
+
+//Clear modal
+function clearModal(e) {
+if(e.target == modal){
+    modal.style.display = 'none';
+}
 }
    
  // Event listeners
  choices.forEach(choice => choice.addEventListener('click', play));
+ window.addEventListener('click', clearModal);
