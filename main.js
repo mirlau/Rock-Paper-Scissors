@@ -62,20 +62,20 @@ function showWinner(winner, computerChoice) {
         result.innerHTML = `
         <h1 class="text-win">You Win!<h/1>
         <i class="fas fa-hand-${computerChoice} fa-10x"></i>
-        <p>Computer chose<strong>${computerChoice}</strong></p>
+        <p>Computer Chose <strong>${computerChoice}</strong></p>
         `;
     } else if(winner === 'computer') {
         scoreboard.computer++
         result.innerHTML = `
         <h1 class="text-lose">You Lose!<h/1>
         <i class="fas fa-hand-${computerChoice} fa-10x"></i>
-        <p>Computer chose<strong>${computerChoice}</strong></p>
+        <p>Computer Chose <strong>${computerChoice}</strong></p>
         `;  
     } else {
         result.innerHTML = `
         <h1>It's a draw!<h/1>
         <i class="fas fa-hand-${computerChoice} fa-10x"></i>
-        <p>Computer chose<strong>${computerChoice}</strong></p>
+        <p>Computer Chose <strong>${computerChoice}</strong></p>
         `;  
     }
     // Show score
@@ -87,6 +87,15 @@ function showWinner(winner, computerChoice) {
     modal.style.display = 'block';
 }
 
+//Restart game
+function restartGame() {
+    scoreboard.player =0;
+    scoreboard.computer = 0;
+    scoreboard.innerHTML = `
+    <p>Player: 0</p>
+    <p>Computer: 0</p>
+    `;
+}
 //Clear modal
 function clearModal(e) {
 if(e.target == modal){
@@ -97,3 +106,4 @@ if(e.target == modal){
  // Event listeners
  choices.forEach(choice => choice.addEventListener('click', play));
  window.addEventListener('click', clearModal);
+ restart.addEventListener ('click', restartGame);
