@@ -93,13 +93,14 @@ body {
     color: var(--lose-color);
 }
 
-@media(max-width: 700px) {
-    .choice{
-        font-size: 110px;
+@media (max-width: 700px) {
+    .choice {
+      font-size: 110px;
     }
-}
-@media(max-width: 500px) {
-    .choice{
-        font-size: 80px;
+  }
+  
+  @media (max-width: 500px) {
+    .choice {
+      font-size: 80px;
     }
-}
+  }

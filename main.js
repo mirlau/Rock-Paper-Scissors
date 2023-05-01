@@ -8,7 +8,7 @@ const scoreboard = {
   computer: 0
 };
 
- // Play game
+// Play game
 function play(e) {
   restart.style.display = 'inline-block';
   const playerChoice = e.target.id;
@@ -16,94 +16,101 @@ function play(e) {
   const winner = getWinner(playerChoice, computerChoice);
   
   showWinner(winner, computerChoice);
- 
-    }
+}
 
-// Gets computes choice
+// Get computers choice
 function getComputerChoice() {
-    const rand = Math.random();
-    if(rand < 0.34){
-        return 'rock';
-    } else if(rand <= 0.67){
-        return 'paper';
-    } else {
-        return 'scissors';
-    }
-    }
+  const rand = Math.random();
+  if (rand < 0.34) {
+    return 'rock';
+  } else if (rand <= 0.67) {
+    return 'paper';
+  } else {
+    return 'scissors';
+  }
+}
 
-    // Get game winner
-    function getWinner(player, computer) {
-    if (player === computer) {
-      return 'draw';
-    } else if (player === 'rock') {
-      if (computer === 'paper') {
-        return 'computer';
-      } else {
-        return 'player';
-      }
-    } else if (player === 'paper') {
-      if (computer === 'scissors') {
-        return 'computer';
-      } else {
-        return 'player';
-      }
-    } else if (player === 'scissors') {
-      if (computer === 'rock') {
-        return 'computer';
-      } else {
-        return 'player';
-      }
+// Get game winner
+function getWinner(p, c) {
+  if (p === c) {
+    return 'draw';
+  } else if (p === 'rock') {
+    if (c === 'paper') {
+      return 'computer';
+    } else {
+      return 'player';
+    }
+  } else if (p === 'paper') {
+    if (c === 'scissors') {
+      return 'computer';
+    } else {
+      return 'player';
+    }
+  } else if (p === 'scissors') {
+    if (c === 'rock') {
+      return 'computer';
+    } else {
+      return 'player';
     }
   }
+}
 
 function showWinner(winner, computerChoice) {
-    if(winner === 'player') {
-        scoreboard.player++
-        result.innerHTML = `
-        <h1 class="text-win">You Win!<h/1>
-        <i class="fas fa-hand-${computerChoice} fa-10x"></i>
-        <p>Computer Chose <strong>${computerChoice}</strong></p>
-        `;
-    } else if(winner === 'computer') {
-        scoreboard.computer++
-        result.innerHTML = `
-        <h1 class="text-lose">You Lose!<h/1>
-        <i class="fas fa-hand-${computerChoice} fa-10x"></i>
-        <p>Computer Chose <strong>${computerChoice}</strong></p>
-        `;  
-    } else {
-        result.innerHTML = `
-        <h1>It's a draw!<h/1>
-        <i class="fas fa-hand-${computerChoice} fa-10x"></i>
-        <p>Computer Chose <strong>${computerChoice}</strong></p>
-        `;  
-    }
-    // Show score
-    score.innerHTML = `
+  if (winner === 'player') {
+    // Inc player score
+    scoreboard.player++;
+    // Show modal result
+    result.innerHTML = `
+      <h1 class="text-win">You Win</h1>
+      <i class="fas fa-hand-${computerChoice} fa-10x"></i>
+      <p>Computer Chose <strong>${computerChoice.charAt(0).toUpperCase() +
+        computerChoice.slice(1)}</strong></p>
+    `;
+  } else if (winner === 'computer') {
+    // Inc computer score
+    scoreboard.computer++;
+    // Show modal result
+    result.innerHTML = `
+      <h1 class="text-lose">You Lose</h1>
+      <i class="fas fa-hand-${computerChoice} fa-10x"></i>
+      <p>Computer Chose <strong>${computerChoice.charAt(0).toUpperCase() +
+        computerChoice.slice(1)}</strong></p>
+    `;
+  } else {
+    result.innerHTML = `
+      <h1>It's A Draw</h1>
+      <i class="fas fa-hand-${computerChoice} fa-10x"></i>
+      <p>Computer Chose <strong>${computerChoice.charAt(0).toUpperCase() +
+        computerChoice.slice(1)}</strong></p>
+    `;
+  }
+  // Show score
+  score.innerHTML = `
     <p>Player: ${scoreboard.player}</p>
     <p>Computer: ${scoreboard.computer}</p>
     `;
 
-    modal.style.display = 'block';
+  modal.style.display = 'block';
 }
 
-//Restart game
+// Restart game
 function restartGame() {
-    scoreboard.player =0;
-    scoreboard.computer = 0;
-    scoreboard.innerHTML = `
+  scoreboard.player = 0;
+  scoreboard.computer = 0;
+  score.innerHTML = `
     <p>Player: 0</p>
     <p>Computer: 0</p>
-    `;
+  `;
 }
-//Clear modal
+
+// Clear modal
 function clearModal(e) {
-if(e.target == modal){
+  if (e.target == modal) {
     modal.style.display = 'none';
+  }
 }
-}
-   
- // Event listeners
- choices.forEach(choice => choice.addEventListener('click', play));
- window.addEventListener('click', clearModal);
- restart.addEventListener ('click', restartGame);
+
+// Event listeners
+choices.forEach(choice => choice.addEventListener('click', play));
+window.addEventListener('click', clearModal);
+restart.addEventListener('click', restartGame);
